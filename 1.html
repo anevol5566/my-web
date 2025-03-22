@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>进校码</title>
+    <style>
+        html,
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .image-container {
+            width: 100vh;
+            aspect-ratio: 617 / 1268;
+            margin: 0;
+            background-image: url("jxmdb.jpg");
+            background-repeat: no-repeat;
+            background-size: 100%;
+            /* 使图片覆盖整个背景 */
+            background-position: center;
+
+            /* 使图片居中 */
+
+            position: relative;
+        }
+
+
+
+        .fixed-text {
+            position: relative;
+            /* 绝对定位 */
+            top: 42.64%;
+            /* 定位到垂直方向的三分之一处 */
+            left: 50%;
+            /* 定位到水平方向的中间 */
+            transform: translate(-50%, -50%);
+            /* 确保文字完全居中 */
+            color: rgb(0, 0, 0);
+            /* 文字颜色 */
+            width: 50%;
+            background-color: #E1F0FD;
+            font-size: 110%;
+            /* 文字大小 */
+            font-weight: bold;
+            /* 文字加粗 */
+            text-align: center;
+            /* 文字居中 */
+            font-family: "SimHei";
+        }
+
+        .fixed-text1 {
+            position: absolute;
+            /* 绝对定位 */
+            top: 46.9%;
+            /* 定位到垂直方向的三分之一处 */
+            left: 50%;
+            /* 定位到水平方向的中间 */
+            transform: translate(-50%, -50%);
+            /* 确保文字完全居中 */
+            color: rgb(0, 0, 0);
+            /* 文字颜色 */
+            background-color: #E1F0FD;
+            font-size: 112%;
+            /* 文字大小 */
+            font-weight: bold;
+            /* 文字加粗 */
+            text-align: center;
+            /* 文字居中 */
+            font-family: "arial";
+        }
+
+        .fixed-text2 {
+            position: absolute;
+            /* 绝对定位 */
+            top: 91.3%;
+            /* 定位到垂直方向的三分之一处 */
+            left: 38%;
+            /* 定位到水平方向的中间 */
+            transform: translate(-50%, -50%);
+            /* 确保文字完全居中 */
+            color: rgb(255, 255, 255);
+            /* 文字颜色 */
+            background-color: #1B5AA7;
+            font-size: 110%;
+            /* 文字大小 */
+
+            /* 文字加粗 */
+            text-align: center;
+            /* 文字居中 */
+            font-family: "arial";
+        }
+
+        .fixed-text3 {
+            position: absolute;
+            /* 绝对定位 */
+            top: 94.6%;
+            /* 定位到垂直方向的三分之一处 */
+            left: 28.8%;
+            /* 定位到水平方向的中间 */
+            transform: translate(-50%, -50%);
+            /* 确保文字完全居中 */
+            color: rgb(255, 255, 255);
+            /* 文字颜色 */
+            background-color: #1B5AA7;
+            font-size: 118%;
+            /* 文字大小 */
+
+            /* 文字加粗 */
+            text-align: center;
+            /* 文字居中 */
+            font-family: "arial";
+        }
+
+
+
+        .image-container img {
+            max-width: 100%;
+            /* 图片最大宽度为容器的宽度 */
+            max-height: 100%;
+            /* 图片最大高度为容器的高度 */
+            object-fit: contain;
+            /* 保持图片比例，完整显示图片 */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="image-container">
+        <!-- <img src="jxmdb.jpg"> -->
+        <div class="fixed-text">
+            谷九霞
+        </div>
+        <div id="clock"></div>
+    </div>
+
+    <script>
+        function updateTime() {
+            const now = new Date();
+
+            // 获取各时间组件
+            const year = now.getFullYear();
+            const month = (now.getMonth() + 1).toString().padStart(2, '0');
+            const date = now.getDate().toString().padStart(2, '0');
+
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+
+            // 星期映射
+            const weekdays = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+            const day = weekdays[now.getDay()];
+
+            // 格式化输出
+            const dateString = `${year}-${month}-${date} ${hours}:${minutes}:${seconds}`;
+            const dateString2 = `${month}-${date}`;
+
+            const timeString = `${hours}:00:00`;
+            //const dateString = `${year}-${month}-${date} ${day}`;
+            //const timeString = `${hours}:${minutes}:${seconds}`;
+            // 组合显示
+            document.getElementById('clock').innerHTML = `
+                <div class="fixed-text1">${dateString}</div>
+                <div class="fixed-text2">${dateString2}</div>
+                <div class="fixed-text3">${timeString}</div>
+            `;
+        }
+
+        // 立即执行一次更新
+        updateTime();
+        // 每秒更新一次
+        setInterval(updateTime, 1000);
+    </script>
+</body>
+
+</html>
